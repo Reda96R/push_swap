@@ -1,11 +1,9 @@
-# ::: push_swap :::
-
 `This project will make you sort data on a stack, with a limited set of instructions, using
 the lowest possible number of actions. To succeed you’ll have to manipulate various
 types of algorithms and choose the most appropriate solution (out of many) for an
 optimized data sorting.`
 
-## Project overview :
+# Project overview :
 
 This project is one of the algorithm projects that you’ll tackle on your way through the 42 network school curriculum, and it is about sorting a [stack](https://en.wikipedia.org/wiki/Stack_(abstract_data_type)) with the least amount of instructions possible (*less than 5500 is considered perfect*), and to make things more interesting the only way you can manipulate data in the stack is with a limited set of instructions.
 
@@ -42,38 +40,98 @@ first we should treat our stack depending on how many numbers it contains:
     - 2 points if the instructions are less than 10000
     - 1 points if the instructions are less than 11500
 
-## The algorithm:
+# Coding plan:
 
-There are many sorting algorithms out there, one of them is to use [Radix sort](https://brilliant.org/wiki/radix-sort/), or you can use any other sorting algorithm as long as it has the right complexity to get you full points, while many of my peers devided the stacks into small little chunks, I will try to find a more simple solution that can get me the fulll score.
+My implementation will consider three steps as follows:
 
-my algorithm will take [Yigit Ogun](https://medium.com/@ayogun)’s algoithm as a starting point, it mainly consists of two parts, the first is to push everything to stack B in descending order, then push them back to stack A where they will be kind of automatically sorted.
+### 1/ Initializing & Parsing:
 
-So let’s get started:
+In this step we’ll need to first initialize stacks A and B, then parse the input to these stacks, at this phase we should make sure to handle errors related to input.
 
-### 1/ Pushing the starting numbers to B:
+### 2/ Sorting stacks:
 
-The first step in the first part is to push two random numbers from A to B, this step will set a strating point to which we’ll be sorting the numbers pushed in B, by comparing them to these two numbers.
+This is where it gets interesting, because this is where we’ll need an algorithm to sort stacks utilizing as few operations as possible.
 
-### 2/ Finding the cheapest number:
+### 3/ Freeing stacks and terminating:
 
-From this point, we will search for the number that requires less operations in order to push it in the right place in stack B, so we will calculate one by one for each number in stack A until we find the cheapest one and push it in the right place in B, we will continue the calculations until we have only three numbers left.
+This is the last step, where we’ll be freeing resources used by the program while handling leaks and errors related to memory.
 
-### 3/ Last three numbers:
+so our main function will look something like this:
 
-This case is the esiest to solve, because we don’t need to push enything, but instead we only need one operation in most cases, except for the case where we have numbers in descending order, in this case we’ll need two operations to sort everything.
+```c
+int	main(int ac, char *av[])
+{
+	t_stacks	stacks;
 
-### 4/ Pushing back to A:
+	ft_init_stacks(&stacks, ac, av); //Initializing & Parsing
+	ft_sort_stacks(&stacks); //Sorting stacks
+	ft_clean_stacks(&stacks); //Freeing stacks and terminating 
+	exit(EXIT_SUCCESS);
+	return (0);
+}
+```
 
-It is time to push everything back from B to A, but before we make sure that it is pushed in the corect place, if not we’ll rotate A until the right position come up.
+# Walking the walk:
 
-### 5/ The Grand Finale:
+## Parsing:
 
-This is the final step, where put the minimum number at the top of the stack, and with that we’ll have our stack sorted and complete.
+first we need to define our stacks, for me I defined them as follow:
 
-If you want a more detailed explanation of the algorithm with examples check this [article](https://medium.com/@ayogun/push-swap-c1f5d2d41e97).
+```c
+/* This is our stack */
+typedef struct s_stack
+{
+	long			nbr;
+	long			index;
+	struct s_stack	*next;
+	struct s_stack	*prev;
+}t_stack;
+
+/* We grouped both stacks so it can be cleaner */
+typedef struct s_stacks
+{
+	t_stack	*a;
+	t_stack	*b;
+}t_stacks;
+```
+
+for the parsing step we’ll make the function `ft_init_stacks()`, it should first handle errors related to input,
+
+```c
+void	ft_init_stacks(t_stacks *stacks, int ac, char *av[])
+{
+	int		i;
+	size_t	j;
+
+	ft_bzero(&stacks, sizeof(t_stacks)); //to get rid of garbage values in stacks
+	if (ac == 1) //if we have only one argument
+		exit(EXIT_SUCCESS);
+	i = 1;
+	while (ac > i)
+	{
+		j = 0;
+		if (!av[i][0]) //if one of the args is empty
+			ft_error(stacks);
+		while (av[i][j])
+		{
+			while (av[i][j] && ft_space(av[i][j]))
+				j++;
+			if (!av[i][j])
+				break ;
+			if (!ft_parser(&(stacks->a), &(av[i][j])))
+				ft_error(stacks);
+			while (av[i][j] && !ft_space(av[i][j]))
+				j++;
+		}
+		i++;
+	}
+}
+```
 
 ## Resources:
 
+- [What is a stack?](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/)
 - [Time Complexities of all Sorting Algorithms](https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/)
 - [Counting Sort](https://brilliant.org/wiki/counting-sort/)
 - [Radix Sort](https://www.javatpoint.com/radix-sort)
+-
