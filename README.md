@@ -75,19 +75,31 @@ int	main(int ac, char *av[])
 
 ## Parsing:
 
-first we need to define our stacks, for me I defined them as follow:
+first we need to define our stacks, and for that we will use linked lists. linked lists are simply a [linear data structure](https://www.upgrad.com/blog/what-is-linear-data-structure/) which means each element is linked directly to its previous and next elements,
+
+every linked lists consist of nodes, and each node consists of two parts, the first is where the data is stored, the second part contains the address of another node.
+
+```c
+                    |-------------|      |-------------|
+          HEAD ---> | data | next | ---> | data | next | ---> NULL
+                    |-------------|      |-------------|
+```
+
+so our linked list starts with a `HEAD` which saves the address of the first node, and the last node’s next portion points to `NULL`, which marks the end of our list.
+
+so we’ll have something like this:
 
 ```c
 /* This is our stack */
 typedef struct s_stack
 {
-	long			nbr;
-	long			index;
-	struct s_stack	*next;
-	struct s_stack	*prev;
+	long			nbr; //The number
+	long			index; //I'll explain later on why I need this index
+	struct s_stack	*next; //Next element
+	struct s_stack	*prev; //Previous element
 }t_stack;
 
-/* We grouped both stacks so it can be cleaner */
+/* We grouped both stacks for easier manipulation */
 typedef struct s_stacks
 {
 	t_stack	*a;
@@ -131,6 +143,7 @@ void	ft_init_stacks(t_stacks *stacks, int ac, char *av[])
 ## Resources:
 
 - [What is a stack?](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/)
+- [Linked lists](https://www.programiz.com/dsa/linked-list)
 - [Time Complexities of all Sorting Algorithms](https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/)
 - [Counting Sort](https://brilliant.org/wiki/counting-sort/)
 - [Radix Sort](https://www.javatpoint.com/radix-sort)
