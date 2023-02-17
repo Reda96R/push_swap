@@ -140,6 +140,27 @@ void	ft_init_stacks(t_stacks *stacks, int ac, char *av[])
 }
 ```
 
+if we encounter an error, we’ll utilize the function `ft_error()` that will print an error message then it will free stacks by calling `ft_cleaner()`, if not, and everything went well, the `ft_parser()` function will handle the parsing,
+
+```c
+int	ft_parser(t_stack **stack, char *str)
+{
+	long	n;
+
+	if (ft_type_check(&n, str) && ft_fill_stack(stack, n))
+		return (1);
+	return (0);
+}
+```
+
+so first we will check the validity of our args with the help of `ft_type_check()` that will make sure that our args contain only digits, if so it will convert the content into an `int` and stores its value in `n`, then our stacks will be filled with `n` utilizing `ft_fill_stack()`.
+
+## Sorting:
+
+Now we arrived in the part where we’ll have to sort or stacks, I’ll divide this part into two portions, the first will discuss the algorithm used, while the other will focus on the implementation.
+
+### The Algorithm:
+
 ## Resources:
 
 - [What is a stack?](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/)
