@@ -5,90 +5,80 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/21 19:30:24 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/02/21 19:34:59 by rerayyad         ###   ########.fr       */
+/*   Created: 2023/02/23 11:11:54 by rerayyad          #+#    #+#             */
+/*   Updated: 2023/02/23 12:42:07 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_pa(t_stack **a, t_stack **b, int i)
+void	ft_push(t_stack **dest, t_stack **src, int i)
 {
 	t_stack	*n;
 
-	if (!*b)
+	if (!*src)
 		return ;
-	n = *a;
-	*a = *b;
-	*b = (*b)->next;
-	(*a)->next = n;
-	if (!i)
-		write(1, "pa\n", 3);
+	n = *dest;
+	*dest = *src;
+	*src = (*src)->next;
+	(*dest)->next = n;
+	if (i == 1)
+		write (1, "pa\n", 3);
+	else if (i == 2)
+		write (1, "pb\n", 3);
 }
 
-void	ft_pb(t_stack **a, t_stack **b, int i)
+void	ft_swap(t_stack **stack, int i)
 {
 	t_stack	*n;
 
-	if (*a)
+	if (!*stack || !(*stack)->next)
 		return ;
-	n = *b;
-	*b = *a;
-	*a = (*a)->next;
-	(*b)->next = n;
-	if (!i)
-		write(1, "pb\n", 3);
+	n = *stack;
+	*stack = (*stack)->next;
+	n->next = (*stack)->next;
+	(*stack)->next = n;
+	if (i == 1)
+		write (1, "sa\n", 3);
+	else if (i == 2)
+		write (1, "sb\n", 3);
 }
 
-void	ft_ra(t_stack **a, int i)
+void	ft_ss(t_stack **a, t_stack **b, int i)
+{
+	//t_stack	*n;
+
+	if (!*a || !*b || !(*a)->next || !(*b)->next)
+		return ;
+	ft_swap(a, 0);
+	ft_swap(b, 0);
+	if (i)
+		write (1, "ss\n", 3);
+}
+
+void	ft_rotate(t_stack **stack, int i)
 {
 	t_stack	*n;
 
-	if (!*a || !(*a)->next)
+	if (!*stack || !(*stack)->next)
 		return ;
-	n = *a;
-	*a = ft_last(*a);
-	(*a)->next = n;
-	*a = n->next;
+	n = *stack;
+	*stack = ft_last(*stack);
+	(*stack)->next = n;
+	*stack = n->next;
 	n->next = NULL;
-	if (!i)
-		write(1, "ra\n", 3);
-}
-
-void	ft_rb(t_stack **b, int i)
-{
-	t_stack	*n;
-
-	if (!*b || !(*b)->next)
-		return ;
-	n = *b;
-	*b = ft_last(*b);
-	(*b)->next = n;
-	*b = n->next;
-	n->next = NULL;
-	if (!i)
-		write(1, "rb\n", 3);
+	if (i == 1)
+		write (1, "ra\n", 3);
+	else if (i == 2)
+		write (1, "rb\n", 3);
 }
 
 void	ft_rr(t_stack **a, t_stack **b, int i)
 {
-	t_stack	*n;
-
 	if (!*a || !*b || !(*a)->next || !(*b)->next)
 		return ;
-	ft_rb(b, 1);
-	ft_ra(a, 1);
-	// n = *a;
-	// *a = ft_last(*a);
-	// (*a)->next = n;
-	// *a = n->next;
-	// n->next = NULL;
-	// n = *b;
-	// *b = ft_last(*b);
-	// (*b)->next = n;
-	// *b = n->next;
-	// n->next = NULL;
-	if (!i)
-		write(1, "rr\n", 2);
+	ft_rotate(a, 0);
+	ft_rotate(b, 0);
+	if (i)
+		write (1, "rr\n", 3);
 }
-
