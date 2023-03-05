@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:52:01 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/04 17:23:57 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/05 16:57:24 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	ft_rrr(t_stack **a, t_stack **b, int i);
 
 /* :::sorting::: */
 void	ft_sort_stacks(t_stacks *stacks);
-void	ft_case_three(t_stack *a);
+void	ft_case_three(t_stack **a);
 
 /* :::checkers::: */
 int		ft_check_sorting(t_stack *a);
