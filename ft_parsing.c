@@ -6,17 +6,38 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 13:31:13 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/02/15 16:21:30 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/02/25 15:34:54 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+int	ft_fill_stack(t_stack **stack, long nbr)
+{
+	t_stack	*new;
+	int		*content;
+
+	if (ft_duplication_check(stack, nbr))
+		return (0);
+	content = malloc(sizeof (int));
+	if (!content)
+		return (0);
+	*content = nbr;
+	new = ft_new(content);
+	if (!new)
+	{
+		free(content);
+		return (0);
+	}
+	ft_add_to_stack(stack, new);
+	return (1);
+}
+
 int	ft_parser(t_stack **stack, char *str)
 {
 	long	n;
 
-	if (ft_type_check(&n, str) && ft_put(stack, n))
+	if (ft_type_checker(&n, str) && ft_fill_stack(stack, n))
 		return (1);
 	return (0);
 }
@@ -42,7 +63,7 @@ void	ft_init_stacks(t_stacks *stacks, int ac, char *av[])
 				break ;
 			if (!ft_parser(&(stacks->a), &(av[i][j])))
 				ft_errors_buster(stacks);
-			while (av[i][j] && !ft_space(av[i][j]))
+			while (av[i][j] && !ft_space_check(av[i][j]))
 				j++;
 		}
 		i++;
