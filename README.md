@@ -1,5 +1,3 @@
-# ::: push_swap :::
-
 `This project will make you sort data on a stack, with a limited set of instructions, using
 the lowest possible number of actions. To succeed you’ll have to manipulate various
 types of algorithms and choose the most appropriate solution (out of many) for an
@@ -165,6 +163,39 @@ Now we arrived in the part where we’ll have to sort or stacks, I’ll divide t
 
 there are many algorithms that we can adopt to sort our stacks. but again our main goal here is to have the full score, and to do that we must adopt an algorithm that will do the sorting in the most efficient way possible, one of the most popular algorithm is to divide the stacks into small little chunks, if your more into this algorithm you check this [article](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a),
 
+first we will try to deal with the three numbers case, which is the simplest one, and to do that we’ll split our function into three possibilities:
+
+1. the first number is the smallest,
+2. the first number is the biggest,
+3. the first number is the middle one.
+
+```c
+void	ft_case_three(t_stack **a)
+{
+	t_stack	*last;
+
+	last = ft_last(*a);
+	if (*(*a)->nbr == ft_min_finder(*a)) //possibility 1
+	{
+		ft_rev_rot(a, 1);
+		ft_swap(a, 1);
+	}
+	else if (*(*a)->nbr == ft_max_finder(*a)) //possibility 2
+	{	
+		ft_rotate(a, 1);
+		if (!ft_check_sorting(*a))
+			ft_swap(a, 1);
+	}
+	else //possibility 3
+	{
+		if (*last->nbr == ft_max_finder(*a))
+			ft_swap(a, 1);
+		else
+			ft_rev_rot(a, 1);
+	}
+}
+```
+
 ## Resources:
 
 - [What is a stack?](https://www.geeksforgeeks.org/introduction-to-stack-data-structure-and-algorithm-tutorials/)
@@ -172,3 +203,4 @@ there are many algorithms that we can adopt to sort our stacks. but again our ma
 - [Time Complexities of all Sorting Algorithms](https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/)
 - [Counting Sort](https://brilliant.org/wiki/counting-sort/)
 - [Radix Sort](https://www.javatpoint.com/radix-sort)
+-
