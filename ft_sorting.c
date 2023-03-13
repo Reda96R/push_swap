@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:28:58 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/05 19:15:12 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/12 17:28:05 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_first_sort(t_stacks *stacks)
 	while (ft_stack_size(stacks->a) > 3 && counter++ < 3
 		&& !ft_check_sorting(stacks->a))
 		ft_push(&stacks->b, &stacks->a, 0);
-	//if (ft_stack_size(stacks->a) > 3 && !ft_check_sorting(stacks->a))
-		//ft_road_to_three(stacks);
-	if (!ft_check_sorting(stacks->a))
+	if (ft_stack_size(stacks->a) > 3 && !ft_check_sorting(stacks->a))
+		ft_road_to_three(stacks);
+	if (!ft_check_sorting(stacks->a) && ft_stack_size(stacks->a) == 3)
 		ft_case_three(&(stacks->a));
 }
 

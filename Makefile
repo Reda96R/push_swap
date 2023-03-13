@@ -1,5 +1,5 @@
 NAME = push_swap
-FILES = main.c ft_checkers.c ft_cleaner.c ft_errors_busters.c ft_helpers.c ft_lists.c ft_parsing.c ft_actions_0.c ft_actions_1.c ft_sorting.c ft_sorting1.c ft_finders.c 
+FILES = main.c ft_checkers.c ft_cleaner.c ft_errors_busters.c ft_helpers.c ft_lists.c ft_parsing.c ft_actions_0.c ft_actions_1.c ft_sorting.c ft_sorting1.c ft_finders.c ft_placer.c ft_calculators.c
 OBJS = $(FILES:.c=.o)
 CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
 
