@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:52:01 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/12 19:51:58 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/19 17:33:53 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	ft_rrr(t_stack **a, t_stack **b, int i);
 /* :::sorting::: */
 void	ft_sort_stacks(t_stacks *stacks);
 void	ft_case_three(t_stack **a);
-void	ft_road_to_three(t_stacks *stacks);
+void	ft_road_to_three(t_stacks **stacks);
 
 /* :::checkers::: */
 int		ft_check_sorting(t_stack *a);
@@ -63,8 +63,12 @@ int		ft_space_check(char c);
 int		ft_isdigit(int c);
 
 /* :::calculators::: */
-int		ft_rot_com(t_stacks	*stacks);
+int		ft_rot_comb_ab(t_stacks	*stacks);
 int		ft_rot_cal(t_stacks *stacks, int nbr);
+int		ft_ra_rb(t_stacks *stacks, int nbr);
+int		ft_rra_rrb(t_stacks *stacks, int nbr);
+int		ft_rra_rb(t_stacks *stacks, int nbr);
+int		ft_ra_rrb(t_stacks *stacks, int nbr);
 
 /* :::placer::: */
 int		ft_b_placer(t_stack *stack, int nbr);
