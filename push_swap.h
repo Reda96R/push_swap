@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:52:01 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/19 17:33:53 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/20 09:48:04 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,11 @@ int		ft_rra_rrb(t_stacks *stacks, int nbr);
 int		ft_rra_rb(t_stacks *stacks, int nbr);
 int		ft_ra_rrb(t_stacks *stacks, int nbr);
 
-/* :::placer::: */
+/* :::appliers:::*/
+int		ft_app_ra_rb(t_stacks ***stacks, int nbr, int n);
+int		ft_app_rra_rrb(t_stacks ***stacks, int nbr, int n);
+
+/* :::placers::: */
 int		ft_b_placer(t_stack *stack, int nbr);
 
 /* :::finders::: */
