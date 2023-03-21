@@ -99,7 +99,7 @@ typedef struct s_stack
 	struct s_stack	*prev; //Previous element
 }t_stack;
 
-/* We grouped both stacks for easier manipulation */
+/* We grouped both stacks for easier manipulations */
 typedef struct s_stacks
 {
 	t_stack	*a;
@@ -193,6 +193,28 @@ void	ft_case_three(t_stack **a)
 		else
 			ft_rev_rot(a, 1);
 	}
+}
+```
+
+<aside>
+💡 The `->` operator has higher precedence than the `*` operator, so for example without the parentheses, the expression `*stack->next` would be interpreted as `*(stack->next)`. This would attempt to dereference the next member of stack before accessing its next member, which is not what we want.
+By using parentheses to group together the expression `*stack`, we ensure that the `->` operator is applied to the inner pointer first, and then the `*` operator is applied to the result of that expression. This allows us to access the next member of the `t_stack` struct pointed to by `*stack` as intended.
+
+</aside>
+
+Now we’ll try to defrag more complex cases till we have our base case.
+
+first thing we’ll try to do is to have a starting point and for that we’ll push the two first numbers from `stack a` to `stack b`, by this we’ve made ourselves a **max** and a **min** numbers in `b` , this will help us form a semi-sort by pushing numbers from `a` into the right place in `b`.
+
+```c
+void	ft_first_sort(t_stacks **stacks)
+{
+	int	counter;
+
+	counter = 1;
+	while (ft_stack_size((*stacks)->a) > 3 && counter++ < 3
+		&& !ft_check_sorting((*stacks)->a))
+		ft_push(&(*stacks)->b, &(*stacks)->a, 0);
 }
 ```
 
