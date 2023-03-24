@@ -6,21 +6,30 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:36:42 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/12 19:59:45 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/22 18:19:01 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_rot_com(t_stacks	*stacks)
+int	ft_rot_comb_ab(t_stacks	**stacks)
 {
 	int		i;
 	t_stack	*tmp;
 
-	tmp = stacks->a;
-	i = ft_rot_cal(stacks, stacks->a->nbr);
+	i = ft_rra_rrb(*stacks, *(*stacks)->a->nbr);
+	tmp = (*stacks)->a;
 	while (tmp)
 	{
+		if (i > ft_ra_rb(*stacks, *tmp->nbr))
+			i = ft_ra_rb(*stacks, *tmp->nbr);
+		if (i > ft_rra_rrb(*stacks, *tmp->nbr))
+			i = ft_rra_rrb(*stacks, *tmp->nbr);
+		if (i > ft_ra_rrb(*stacks, *tmp->nbr))
+			i = ft_ra_rrb(*stacks, *tmp->nbr);
+		if (i > ft_rra_rb(*stacks, *tmp->nbr))
+			i = ft_rra_rb(*stacks, *tmp->nbr);
+		tmp = tmp->next;
 	}
 	return (i);
 }
@@ -50,14 +59,31 @@ void	ft_case_three(t_stack **a)
 	}
 }
 
-void	ft_road_to_three(t_stacks *stacks)
+void	ft_road_to_three(t_stacks **stacks)
 {
-	int		i;
-	t_stack	*tmp;
+	int			i;
+	t_stack		*tmp;
+	t_stacks	tmp2;
 
-	i = ft_rot_comb(stacks);
-	while (i >= 0)
+	tmp2 = **stacks;
+	while (ft_stack_size((*stacks)->a) > 3 && !ft_check_sorting((*stacks)->a))
 	{
+		tmp = (*stacks)->a;
+		i = ft_rot_comb_ab(stacks);
+		while (i >= 0)
+		{
+			if (i == ft_ra_rb(*stacks, *tmp->nbr))
+				i = ft_app_ra_rb(&tmp2, *tmp->nbr, 1);
+			else if (i == ft_rra_rrb(*stacks, *tmp->nbr))
+				i = ft_app_rra_rrb(&tmp2, *tmp->nbr, 1);
+			else if (i == ft_ra_rrb(*stacks, *tmp->nbr))
+				i = ft_app_ra_rrb(&tmp2, *tmp->nbr, 1);
+			else if (i == ft_rra_rb(*stacks, *tmp->nbr))
+				i = ft_app_rra_rb(&tmp2, *tmp->nbr, 1);
+			else
+				tmp = tmp->next;
+		}
+	**stacks = tmp2;
 	}
-	// ft_b_placer(stacks->b, *stacks->a->nbr);
 }
+	// ft_b_placer(stacks->b, *stacks->a->nbr);
