@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 11:11:54 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/05 18:51:37 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/29 17:48:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void	ft_swap(t_stack **stack, int i)
 {
 	t_stack	*tmp;
 
+	if (!*stack || !((*stack)->next))
+		return ;
 	tmp = (*stack)->next;
 	(*stack)->next = tmp->next;
 	tmp->next = *stack;
