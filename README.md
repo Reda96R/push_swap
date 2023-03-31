@@ -271,11 +271,6 @@ int     ft_ra_rb(t_stacks *stacks, int nbr)
         if (i < ft_index_finder(stacks->a, nbr))
                 i = ft_index_finder(stacks->a, nbr);
         return (i);
-
-2 | 10
-6	|  4
-5	|  1
-0	| -1
 }
 ```
 
