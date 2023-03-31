@@ -6,7 +6,11 @@ BONUS_FILES = checker.c get_next_line.c get_next_line_utils.c
 OBJS_M = $(FILES_M:.c=.o)
 OBJS = $(FILES:.c=.o)
 B_OBJS = $(BONUS_FILES:.c=.o)
+<<<<<<< HEAD
 CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+=======
+CFLAGS = -Wall -Wextra -Werror -g -fsanitize=address
+>>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 
 
 all: $(NAME)
@@ -15,12 +19,20 @@ bonus: $(BONUS)
 
 $(NAME): $(OBJS) $(OBJS_M)
 	@echo $(CURSIVE)$(GRAY) ":::Compiling $(NAME):::" $(NONE)
+<<<<<<< HEAD
 	@cc $(CFLAGS) $(OBJS) $(OBJS_M) -o $(NAME)
+=======
+	@gcc $(CFLAGS) $(OBJS) $(OBJS_M) -o $(NAME)
+>>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 	@echo $(GREEN)":::Compiled:::"$(NONE)
 
 $(BONUS): $(B_OBJS) $(OBJS)
 	@echo $(CURSIVE)$(GRAY) ":::Compiling $(BONUS):::" $(NONE)
+<<<<<<< HEAD
 	@cc $(CFLAGS) $(B_OBJS) $(OBJS) -o $(BONUS)
+=======
+	@gcc $(CFLAGS) $(B_OBJS) $(OBJS) -o $(BONUS)
+>>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 	@echo $(GREEN)":::Compiled:::"$(NONE)
 
 $(OBJS): $(FILES)
@@ -34,6 +46,14 @@ $(OBJS_M): $(FILES_M)
 $(B_OBJS): $(BONUS_FILES)
 	@echo $(CURSIVE)$(GRAY) ":::Making object files:::" $(NONE)
 	@cc $(CFLAGS) -c $(BONUS_FILES)
+	@echo $(GREEN)":::Done:::"$(NONE)
+
+$(OBJS_M): $(FILES_M)
+	@gcc $(CFLAGS) -c $(FILES_M)
+
+$(B_OBJS): $(BONUS_FILES)
+	@echo $(CURSIVE)$(GRAY) ":::Making object files:::" $(NONE)
+	@gcc $(CFLAGS) -c $(BONUS_FILES)
 	@echo $(GREEN)":::Done:::"$(NONE)
 
 clean:

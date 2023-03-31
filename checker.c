@@ -6,7 +6,11 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:17:12 by rerayyad          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/03/31 14:02:56 by rerayyad         ###   ########.fr       */
+=======
+/*   Updated: 2023/03/29 17:58:47 by rerayyad         ###   ########.fr       */
+>>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +67,7 @@ void	ft_inspector(t_stacks *stacks, char *input)
 {
 	char	*str;
 
+<<<<<<< HEAD
 	while (input)
 	{
 		if (*input == '\n')
@@ -70,6 +75,11 @@ void	ft_inspector(t_stacks *stacks, char *input)
 		str = input;
 		if (!str)
 			ft_errors_buster(stacks);
+=======
+	while (input && *input != '\n')
+	{
+		str = input;
+>>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 		input = ft_executer(stacks, input);
 		free(str);
 	}
@@ -88,7 +98,11 @@ int	main(int ac, char *av[])
 	char		*input;
 
 	ft_bzero(&stacks, sizeof(t_stacks));
+<<<<<<< HEAD
 	ft_init_stacks(&stacks, ac, av, 0);
+=======
+	ft_init_stacks(&stacks, ac, av);
+>>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 	if (!stacks.a)
 		ft_errors_buster(&stacks);
 	input = get_next_line(0);
@@ -98,6 +112,10 @@ int	main(int ac, char *av[])
 		write (1, "OK\n", 3);
 	else
 		ft_inspector(&stacks, input);
+<<<<<<< HEAD
 	ft_cleaner(&stacks, 0);
+=======
+	ft_cleaner(&stacks);
+>>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 	return (0);
 }
