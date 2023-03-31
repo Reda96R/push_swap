@@ -218,7 +218,7 @@ void	ft_first_sort(t_stacks **stacks)
 }
 ```
 
-the next step is to push all the numbers in a , till the last three numbers, but before every push, we’ll make our calculations so we push that number in the right place with the minumum operations possible, for that we’ll devide our working into three steps
+the next step is to push all the numbers in a , till the last three numbers, but before every push, we’ll make our calculations so we push that number in the right place with the minimum operations possible, for that we’ll divide our work into three steps
 
 ### Finding the right place:
 
@@ -259,6 +259,8 @@ else
 ```
 
 this is the last case, where we’ll alternate through the whole stack until we find the right place, and to do that, we compare our number with the **current** and **next** in `stack a`.
+
+### Choosing the best rotations combination:
 
 next we need to find the operations needed to put **nbr** in the place that we calculated using `ft_b_placer()` , and by operations I mainly mean `rotations` and `push` , and to do that we need to calculate how many movements each rotation combination will need.
 
@@ -317,6 +319,28 @@ int	ft_ra_rrb(t_stacks *stacks, int nbr)
 	i = ft_index_finder(stacks->a, nbr) + i;
 	return (i);
 }
+```
+
+after finding how many operations each rot_comb will need, now it’s time to choose the best one when it comes to efficiency, which is the work of `ft_rot_comb_ba()` .
+
+### Applying the rotations:
+
+after deciding which rotations will be made, now we comeback to our `ft_road_to_three()` function, where we’ll apply the rotations
+
+```c
+while (i >= 0) // each ft_app_x_y() returns -1 after applying the rotations
+		{
+			if (i == ft_ra_rb(*stacks, *tmp->nbr))
+				i = ft_app_ra_rb(&tmp2, *tmp->nbr, 1);
+			else if (i == ft_rra_rrb(*stacks, *tmp->nbr))
+				i = ft_app_rra_rrb(&tmp2, *tmp->nbr, 1);
+			else if (i == ft_ra_rrb(*stacks, *tmp->nbr))
+				i = ft_app_ra_rrb(&tmp2, *tmp->nbr, 1);
+			else if (i == ft_rra_rb(*stacks, *tmp->nbr))
+				i = ft_app_rra_rb(&tmp2, *tmp->nbr, 1);
+			else
+				tmp = tmp->next;
+		}
 ```
 
 ## Resources:
