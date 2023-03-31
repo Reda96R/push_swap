@@ -16,8 +16,6 @@ int	ft_sorting_check(t_stack *a)
 {
 	int	i;
 
-	if (!a || !a->next)
-		exit(1);
 	i = *a->nbr;
 	while (a)
 	{

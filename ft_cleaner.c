@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:21:08 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/29 15:28:32 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:58:05 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,10 @@ void	ft_list_cleaner(t_stack **stack, void (*del)(void *))
 	*stack = NULL;
 }
 
-void	ft_cleaner(t_stacks *stacks)
+void	ft_cleaner(t_stacks *stacks, int n)
 {
 	ft_list_cleaner(&(stacks->a), free);
 	ft_list_cleaner(&(stacks->b), free);
+	if (n)
+		exit(0);
 }

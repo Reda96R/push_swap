@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:17:12 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/29 17:58:47 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/31 14:02:56 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,13 @@ void	ft_inspector(t_stacks *stacks, char *input)
 {
 	char	*str;
 
-	while (input && *input != '\n')
+	while (input)
 	{
+		if (*input == '\n')
+			ft_errors_buster(stacks);
 		str = input;
+		if (!str)
+			ft_errors_buster(stacks);
 		input = ft_executer(stacks, input);
 		free(str);
 	}
@@ -84,7 +88,7 @@ int	main(int ac, char *av[])
 	char		*input;
 
 	ft_bzero(&stacks, sizeof(t_stacks));
-	ft_init_stacks(&stacks, ac, av);
+	ft_init_stacks(&stacks, ac, av, 0);
 	if (!stacks.a)
 		ft_errors_buster(&stacks);
 	input = get_next_line(0);
@@ -94,6 +98,6 @@ int	main(int ac, char *av[])
 		write (1, "OK\n", 3);
 	else
 		ft_inspector(&stacks, input);
-	ft_cleaner(&stacks);
+	ft_cleaner(&stacks, 0);
 	return (0);
 }
