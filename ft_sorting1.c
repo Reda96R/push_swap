@@ -6,55 +6,17 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:36:42 by rerayyad          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2023/03/29 17:58:47 by rerayyad         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2023/03/29 17:58:47 by rerayyad         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/22 18:19:01 by rerayyad         ###   ########.fr       */
->>>>>>> a70e43dc9689dfd48803e95da8da18298151d614
->>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-<<<<<<< HEAD
 int	ft_rot_comb_ba(t_stacks *stacks)
 {
 	int		i;
 	t_stack	*tmp;
 
-	i = ft_rra_rrb_a(stacks, *stacks->b->nbr);
-	tmp = stacks->b;
-	while (tmp)
-	{
-		if (i > ft_ra_rb_a(stacks, *tmp->nbr))
-			i = ft_ra_rb_a(stacks, *tmp->nbr);
-		if (i > ft_rra_rrb_a(stacks, *tmp->nbr))
-			i = ft_rra_rrb_a(stacks, *tmp->nbr);
-		if (i > ft_ra_rrb_a(stacks, *tmp->nbr))
-			i = ft_ra_rrb_a(stacks, *tmp->nbr);
-		if (i > ft_rra_rb_a(stacks, *tmp->nbr))
-			i = ft_rra_rb_a(stacks, *tmp->nbr);
-		tmp = tmp->next;
-	}
-	return (i);
-}
-
-=======
-<<<<<<< HEAD
-int	ft_rot_comb_ba(t_stacks *stacks)
-=======
->>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
-int	ft_rot_comb_ab(t_stacks	**stacks)
->>>>>>> a70e43dc9689dfd48803e95da8da18298151d614
-{
-	int		i;
-	t_stack	*tmp;
-
-<<<<<<< HEAD
 	i = ft_rra_rrb_a(stacks, *stacks->b->nbr);
 	tmp = stacks->b;
 	while (tmp)
@@ -81,12 +43,6 @@ int	ft_rot_comb_ab(t_stacks	**stacks)
 	tmp = (*stacks)->a;
 	while (tmp)
 	{
-=======
-	i = ft_rra_rrb(*stacks, *(*stacks)->a->nbr);
-	tmp = (*stacks)->a;
-	while (tmp)
-	{
->>>>>>> a70e43dc9689dfd48803e95da8da18298151d614
 		if (i > ft_ra_rb(*stacks, *tmp->nbr))
 			i = ft_ra_rb(*stacks, *tmp->nbr);
 		if (i > ft_rra_rrb(*stacks, *tmp->nbr))
@@ -132,15 +88,7 @@ void	ft_road_to_three(t_stacks **stacks)
 	t_stacks	tmp2;
 
 	tmp2 = **stacks;
-<<<<<<< HEAD
 	while (ft_stack_size((*stacks)->a) > 3 && !ft_sorting_check((*stacks)->a))
-=======
-<<<<<<< HEAD
-	while (ft_stack_size((*stacks)->a) > 3 && !ft_sorting_check((*stacks)->a))
-=======
-	while (ft_stack_size((*stacks)->a) > 3 && !ft_check_sorting((*stacks)->a))
->>>>>>> a70e43dc9689dfd48803e95da8da18298151d614
->>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 	{
 		tmp = (*stacks)->a;
 		i = ft_rot_comb_ab(stacks);

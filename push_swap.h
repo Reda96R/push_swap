@@ -6,15 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:52:01 by rerayyad          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2023/03/31 13:58:27 by rerayyad         ###   ########.fr       */
-=======
-<<<<<<< HEAD
-/*   Updated: 2023/03/29 17:58:47 by rerayyad         ###   ########.fr       */
-=======
-/*   Updated: 2023/03/22 15:51:02 by rerayyad         ###   ########.fr       */
->>>>>>> a70e43dc9689dfd48803e95da8da18298151d614
->>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,15 +63,7 @@ int		ft_type_checker(long *n, char *str);
 int		ft_space_check(char c);
 int		ft_isdigit(int c);
 
-<<<<<<< HEAD
 /* :::calculators_b::: */
-=======
-<<<<<<< HEAD
-/* :::calculators_b::: */
-=======
-/* :::calculators::: */
->>>>>>> a70e43dc9689dfd48803e95da8da18298151d614
->>>>>>> 09d2d857c57fef8f386719bf717295ce7a80ab8b
 int		ft_rot_comb_ab(t_stacks	**stacks);
 int		ft_ra_rb(t_stacks *stacks, int nbr);
 int		ft_rra_rrb(t_stacks *stacks, int nbr);
