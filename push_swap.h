@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:52:01 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/22 15:51:02 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:58:27 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stddef.h>
 # include <limits.h>
 # include <stddef.h>
+# include "get_next_line.h"
 
 typedef struct s_stack
 {
@@ -37,8 +38,8 @@ typedef struct s_stacks
 void	print_stack(t_stack *stack);
 
 /* :::main functions::: */
-void	ft_init_stacks(t_stacks *stacks, int ac, char *av[]);
-void	ft_cleaner(t_stacks *stacks);
+void	ft_init_stacks(t_stacks *stacks, int ac, char *av[], int n);
+void	ft_cleaner(t_stacks *stacks, int n);
 void	ft_errors_buster(t_stacks *stacks);
 
 /* :::actions::: */
@@ -56,18 +57,25 @@ void	ft_case_three(t_stack **a);
 void	ft_road_to_three(t_stacks **stacks);
 
 /* :::checkers::: */
-int		ft_check_sorting(t_stack *a);
+int		ft_sorting_check(t_stack *a);
 int		ft_duplication_check(t_stack **stack, int n);
 int		ft_type_checker(long *n, char *str);
 int		ft_space_check(char c);
 int		ft_isdigit(int c);
 
-/* :::calculators::: */
+/* :::calculators_b::: */
 int		ft_rot_comb_ab(t_stacks	**stacks);
 int		ft_ra_rb(t_stacks *stacks, int nbr);
 int		ft_rra_rrb(t_stacks *stacks, int nbr);
 int		ft_rra_rb(t_stacks *stacks, int nbr);
 int		ft_ra_rrb(t_stacks *stacks, int nbr);
+
+/* :::calculators_a::: */
+int		ft_rot_comb_ba(t_stacks	*stacks);
+int		ft_ra_rb_a(t_stacks *stacks, int nbr);
+int		ft_rra_rrb_a(t_stacks *stacks, int nbr);
+int		ft_rra_rb_a(t_stacks *stacks, int nbr);
+int		ft_ra_rrb_a(t_stacks *stacks, int nbr);
 
 /* :::appliers:::*/
 int		ft_app_ra_rb(t_stacks *stacks, int nbr, int n);
@@ -77,6 +85,7 @@ int		ft_app_rra_rb(t_stacks *stacks, int nbr, int n);
 
 /* :::placers::: */
 int		ft_b_placer(t_stack *stack, int nbr);
+int		ft_a_placer(t_stack *stack, int nbr);
 
 /* :::finders::: */
 int		ft_min_finder(t_stack *stack);

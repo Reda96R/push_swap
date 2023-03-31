@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 11:52:57 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/22 18:27:39 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:58:37 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,11 @@ int	main(int ac, char *av[])
 	t_stacks	stacks;
 
 	ft_bzero(&stacks, sizeof(t_stacks));
-	ft_init_stacks(&stacks, ac, av);
-	// printf("::: stack a before ::: \n");
-	// print_stack(stacks.a);
-	if (!ft_check_sorting(stacks.a))
+	ft_init_stacks(&stacks, ac, av, 1);
+	if (!stacks.a)
+		ft_errors_buster(&stacks);
+	if (!ft_sorting_check(stacks.a))
 		ft_sort_stacks(&stacks);
-	// printf("\n::: stack a after ::: \n");
-	// print_stack(stacks.a);
-	// printf("\n<-::: stack b :::->\n");
-	// print_stack(stacks.b);
-	// while (1);
-	ft_cleaner(&stacks);
+	ft_cleaner(&stacks, 0);
 	return (0);
 }

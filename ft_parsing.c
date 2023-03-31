@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 13:31:13 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/02/25 15:34:54 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/31 13:58:29 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,13 @@ int	ft_parser(t_stack **stack, char *str)
 	return (0);
 }
 
-void	ft_init_stacks(t_stacks *stacks, int ac, char *av[])
+void	ft_init_stacks(t_stacks *stacks, int ac, char *av[], int n)
 {
 	int		i;
 	size_t	j;
 
-	if (ac == 1)
-		exit(0);
+	if (ac <= 2 && n)
+		ft_cleaner(stacks, 1);
 	i = 1;
 	while (ac > i)
 	{
