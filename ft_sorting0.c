@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:28:58 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/01 15:58:32 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:52:05 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	ft_sort_stacks(t_stacks *stacks)
 		*stacks = ft_first_sort(&tmp);
 		tmp = *stacks;
 		*stacks = ft_second_sort(&tmp);
-		i = ft_min_finder(stacks->a);
+		i = ft_index_finder(stacks->a, ft_min_finder(stacks->a));
 		if (i < ft_stack_size(stacks->a) - i)
 		{
 			while (*stacks->a->nbr != ft_min_finder(stacks->a))
