@@ -204,6 +204,8 @@ By using parentheses to group together the expression `*stack`, we ensure that t
 
 Now we’ll try to defrag more complex cases till we have our base case.
 
+## First sort:
+
 first thing we’ll try to do is to have a starting point and for that we’ll push the two first numbers from `stack a` to `stack b`, by this we’ve made ourselves a **max** and a **min** numbers in `b` , this will help us form a semi-sort by pushing numbers from `a` into the right place in `b`.
 
 ```c
@@ -278,6 +280,8 @@ int     ft_ra_rb(t_stacks *stacks, int nbr)
 
 to find how many rotations are needed , we simply rely on the index provided by `ft_b_placer()`
 
+but bare in mind that we also calculating rotations for `stack_a` and for that we should consider the id of our number in `stack_a` .
+
 ```c
 int ft_rra_rrb(t_stacks *stacks, int nbr)
 {
@@ -340,6 +344,79 @@ while (i >= 0) // each ft_app_x_y() returns -1 after applying the rotations
 				i = ft_app_rra_rb(&tmp2, *tmp->nbr, 1);
 			else
 				tmp = tmp->next;
+		}
+```
+
+for the application, each `ft_app_x_y()` will apply a certain amount of rotations until all conditions are satisfied, let’s take for example, `ft_app_ra_rb()` ,
+
+```c
+int	ft_app_ra_rb(t_stacks *stacks, int nbr, int n)
+{
+	if (n)
+	{
+		while (*stacks->a->nbr != nbr
+			&& ft_b_placer(stacks->b, nbr) > 0) //when both rotations are required
+			ft_rr(&stacks->a, &stacks->b, 1);
+		while (*stacks->a->nbr != nbr) //only ra is required
+			ft_rotate(&stacks->a, 1);
+		while (ft_b_placer(stacks->b, nbr) > 0) //only rb is required
+			ft_rotate(&stacks->b, 2);
+		ft_push(&stacks->b, &stacks->a, 2); //pushing nbr into the right place in b
+	}
+}
+```
+
+and after every application of rotations, a push to `stack_b` is made.
+
+now after we left only three elements in stack_a, we can sort them easily using `ft_case_three()` and we can proceed to the next step.
+
+## Second sort:
+
+at this point our `stack_b` is semi-sorted, and `stack_a` contains only three sorted elements, now it’s time to push all elements back to `stack_a` , and to do that we’re going to follow a similar process to what we did before, 
+
+so the first thing is to find the best place for our number to be, and for that we’ll need `ft_a_placer()` ,
+
+```c
+int	ft_a_placer(t_stack *stack, int nbr)
+{
+	int		i;
+	t_stack	*tmp;
+
+	i = 1;
+	if (nbr < *stack->nbr && nbr > *ft_last(stack)->nbr)
+		i = 0;
+	else if (nbr > ft_max_finder(stack) || nbr < ft_min_finder(stack))
+		i = ft_index_finder(stack, ft_min_finder(stack));
+	else
+	{
+		tmp = stack->next;
+		while (*stack->nbr > nbr || *tmp->nbr < nbr)
+		{
+			stack = stack->next;
+			tmp = stack->next;
+			i++;
+		}
+	}
+	return (i);
+}
+```
+
+after that we chose the best rotation combination using `ft_rot_comb_ba()` , and then we apply them using our **appliers.**
+
+## The Grand Finale:
+
+This is the last step where we have emptied `stack_b` and our `stack_a` contains all the elements that are sorted, the only problem is that we need to bring the **min** number to the top of the stack, t do that we simply keep **rotate/rev_rotate** our stack until **min** is on the top.
+
+```c
+if (i < ft_stack_size(stacks->a) - i)
+		{
+			while (*stacks->a->nbr != ft_min_finder(stacks->a))
+				ft_rotate(&stacks->a, 1);
+		}
+		else
+		{
+			while (*stacks->a->nbr != ft_min_finder(stacks->a))
+				ft_rev_rot(&stacks->a, 1);
 		}
 ```
 
