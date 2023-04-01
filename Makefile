@@ -6,7 +6,7 @@ BONUS_FILES = checker.c get_next_line.c get_next_line_utils.c
 OBJS_M = $(FILES_M:.c=.o)
 OBJS = $(FILES:.c=.o)
 B_OBJS = $(BONUS_FILES:.c=.o)
-CFLAGS = -Wall -Wextra -Werror #-g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror
 
 
 all: $(NAME)

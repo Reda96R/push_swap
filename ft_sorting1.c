@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/04 16:36:42 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/29 17:58:47 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/03/31 15:08:32 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,4 +108,3 @@ void	ft_road_to_three(t_stacks **stacks)
 	**stacks = tmp2;
 	}
 }
-	// ft_b_placer(stacks->b, *stacks->a->nbr);

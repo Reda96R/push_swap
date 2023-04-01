@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:52:01 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/31 13:58:27 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/01 17:41:02 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,7 @@
 typedef struct s_stack
 {
 	int				*nbr;
-	long			index;
 	struct s_stack	*next;
-	struct s_stack	*prev;
 }t_stack;
 
 typedef struct s_stacks
@@ -101,6 +99,6 @@ int		ft_stack_size(t_stack *stack);
 /* :::helpers::: */
 void	ft_bzero(void *s, size_t n);
 void	*ft_memset(void *b, int c, size_t len);
-int		ft_atoi(const char *str);
+long	ft_atoi(const char *str);
 
 #endif

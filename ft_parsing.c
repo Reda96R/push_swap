@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/12 13:31:13 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/31 13:58:29 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/01 16:51:47 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void	ft_init_stacks(t_stacks *stacks, int ac, char *av[], int n)
 	int		i;
 	size_t	j;
 
-	if (ac <= 2 && n)
+	if (ac < 2 && n)
 		ft_cleaner(stacks, 1);
 	i = 1;
 	while (ac > i)
