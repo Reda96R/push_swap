@@ -6,11 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:28:58 by rerayyad          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2023/04/02 22:42:47 by rerayyad         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/01 17:52:05 by rerayyad         ###   ########.fr       */
->>>>>>> af5c9e92abfa76924b55b64cd5587c16988b52ac
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +71,7 @@ void	ft_sort_stacks(t_stacks *stacks)
 		*stacks = ft_first_sort(&tmp);
 		tmp = *stacks;
 		*stacks = ft_second_sort(&tmp);
-<<<<<<< HEAD
 		id = ft_index_finder(stacks->a, ft_min_finder(stacks->a));
 		ft_bring_to_top(&stacks->a, ft_min_finder(stacks->a), id);
-=======
-		i = ft_index_finder(stacks->a, ft_min_finder(stacks->a));
-		if (i < ft_stack_size(stacks->a) - i)
-		{
-			while (*stacks->a->nbr != ft_min_finder(stacks->a))
-				ft_rotate(&stacks->a, 1);
-		}
-		else
-		{
-			while (*stacks->a->nbr != ft_min_finder(stacks->a))
-				ft_rev_rot(&stacks->a, 1);
-		}
->>>>>>> af5c9e92abfa76924b55b64cd5587c16988b52ac
 	}
 }

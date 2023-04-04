@@ -6,11 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 18:52:01 by rerayyad          #+#    #+#             */
-<<<<<<< HEAD
 /*   Updated: 2023/04/02 20:44:45 by rerayyad         ###   ########.fr       */
-=======
-/*   Updated: 2023/04/01 17:41:02 by rerayyad         ###   ########.fr       */
->>>>>>> af5c9e92abfa76924b55b64cd5587c16988b52ac
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,15 +100,9 @@ t_stack		*ft_last(t_stack *stack);
 int			ft_stack_size(t_stack *stack);
 
 /* :::helpers::: */
-<<<<<<< HEAD
 void		ft_bzero(void *s, size_t n);
 void		*ft_memset(void *b, int c, size_t len);
 long		ft_atoi(const char *str);
 void		ft_bring_to_top(t_stack **stack, int nbr, int id);
-=======
-void	ft_bzero(void *s, size_t n);
-void	*ft_memset(void *b, int c, size_t len);
-long	ft_atoi(const char *str);
->>>>>>> af5c9e92abfa76924b55b64cd5587c16988b52ac
 
 #endif
