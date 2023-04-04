@@ -1,7 +1,7 @@
 NAME = push_swap
 BONUS = checker
 FILES_M = main.c 
-FILES = ft_checkpoint.c ft_cleaner.c ft_errors_busters.c ft_helpers.c ft_lists.c ft_parsing.c ft_actions_0.c ft_actions_1.c ft_sorting0.c ft_sorting1.c ft_finders.c ft_placers.c ft_calculators.c ft_calculators1.c ft_appliers.c
+FILES = ft_checkpoint.c ft_cleaner.c ft_errors_busters.c ft_helpers.c ft_lists.c ft_parsing.c ft_actions_0.c ft_actions_1.c ft_sorting0.c ft_sorting1.c ft_finders.c ft_placers.c ft_calculators0.c ft_calculators1.c ft_appliers.c
 BONUS_FILES = checker.c get_next_line.c get_next_line_utils.c
 OBJS_M = $(FILES_M:.c=.o)
 OBJS = $(FILES:.c=.o)

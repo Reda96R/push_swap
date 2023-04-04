@@ -6,12 +6,17 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:17:12 by rerayyad          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2023/04/04 18:01:31 by rerayyad         ###   ########.fr       */
+=======
+/*   Updated: 2023/04/03 00:39:10 by rerayyad         ###   ########.fr       */
+>>>>>>> 31779a8d42bd666c077bbec9c1e8704e7a6a190b
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
+<<<<<<< HEAD
 int	ft_char_check(char c, char *str)
 {
 	int	i;
@@ -23,18 +28,30 @@ int	ft_char_check(char c, char *str)
 	return (0);
 }
 
+=======
+>>>>>>> 31779a8d42bd666c077bbec9c1e8704e7a6a190b
 void	ft_executer_extension(t_stacks **stacks, char *input, int n)
 {
 	if (n == 1)
 	{
+<<<<<<< HEAD
 		if (input[1] == 'a')
 			ft_push(&(*stacks)->a, &(*stacks)->b, 0);
 		else if (input[1] == 'b')
 			ft_push(&(*stacks)->b, &(*stacks)->a, 0);
+=======
+		if (input[2] == 'a')
+			ft_rev_rot(&(*stacks)->a, 0);
+		else if (input[2] == 'b')
+			ft_rev_rot(&(*stacks)->b, 0);
+		else if (input[2] == 'r')
+			ft_rrr(&(*stacks)->a, &(*stacks)->b, 0);
+>>>>>>> 31779a8d42bd666c077bbec9c1e8704e7a6a190b
 	}
 	else if (n == 2)
 	{
 		if (input[1] == 'a')
+<<<<<<< HEAD
 			ft_rotate(&(*stacks)->a, 0);
 		else if (input[1] == 'b')
 			ft_rotate(&(*stacks)->b, 0);
@@ -49,6 +66,11 @@ void	ft_executer_extension(t_stacks **stacks, char *input, int n)
 			ft_rev_rot(&(*stacks)->b, 0);
 		else if (input[2] == 'r')
 			ft_rrr(&(*stacks)->a, &(*stacks)->b, 0);
+=======
+			ft_push(&(*stacks)->a, &(*stacks)->b, 0);
+		else if (input[1] == 'b')
+			ft_push(&(*stacks)->b, &(*stacks)->a, 0);
+>>>>>>> 31779a8d42bd666c077bbec9c1e8704e7a6a190b
 	}
 }
 
@@ -64,6 +86,7 @@ char	*ft_executer(t_stacks *stacks, char *input)
 		else if (input[1] == 's')
 			ft_ss(&stacks->a, &stacks->b, 0);
 	}
+<<<<<<< HEAD
 	else if (input[0] == 'p' && input[2] == '\n'
 		&& ft_char_check(input[1], "ab"))
 		ft_executer_extension(&stacks, input, 1);
@@ -73,6 +96,21 @@ char	*ft_executer(t_stacks *stacks, char *input)
 	else if (input[0] == 'r' && input[1] == 'r'
 		&& input[3] == '\n' && ft_char_check(input[2], "abr"))
 		ft_executer_extension(&stacks, input, 0);
+=======
+	else if (input[0] == 'r' && input[2] == '\n')
+	{
+		if (input[1] == 'a')
+			ft_rotate(&stacks->a, 0);
+		else if (input[1] == 'b')
+			ft_rotate(&stacks->b, 0);
+		else if (input[1] == 'r')
+			ft_rr(&stacks->a, &stacks->b, 0);
+	}
+	else if (input[0] == 'p' && input[2] == '\n')
+		ft_executer_extension(&stacks, input, 0);
+	else if (input[0] == 'r' && input[1] == 'r' && input[3] == '\n')
+		ft_executer_extension(&stacks, input, 1);
+>>>>>>> 31779a8d42bd666c077bbec9c1e8704e7a6a190b
 	else
 		ft_errors_buster(stacks);
 	return (get_next_line(0));

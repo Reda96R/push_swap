@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:43:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/01 17:40:51 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/02 20:45:29 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,18 @@ long	ft_atoi(const char *str)
 		i++;
 	}
 	return (r * s);
+}
+
+void	ft_bring_to_top(t_stack **stack, int nbr, int id)
+{
+	if (id < ft_stack_size(*stack) - id)
+	{
+		while (*(*stack)->nbr != nbr)
+			ft_rotate(&(*stack), 1);
+	}
+	else
+	{
+		while (*(*stack)->nbr != nbr)
+			ft_rev_rot(&(*stack), 1);
+	}
 }

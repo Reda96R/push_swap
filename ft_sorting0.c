@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/23 18:28:58 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/04/01 17:52:05 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/02 22:42:47 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,26 +59,19 @@ t_stacks	ft_second_sort(t_stacks *stacks)
 void	ft_sort_stacks(t_stacks *stacks)
 {
 	t_stacks	tmp;
-	int			i;
+	int			id;
 
 	tmp = *stacks;
 	if (ft_stack_size(stacks->a) == 2)
 		ft_swap(&stacks->a, 1);
+	else if (ft_stack_size(stacks->a) == 5)
+		ft_case_five(&stacks);
 	else
 	{
 		*stacks = ft_first_sort(&tmp);
 		tmp = *stacks;
 		*stacks = ft_second_sort(&tmp);
-		i = ft_index_finder(stacks->a, ft_min_finder(stacks->a));
-		if (i < ft_stack_size(stacks->a) - i)
-		{
-			while (*stacks->a->nbr != ft_min_finder(stacks->a))
-				ft_rotate(&stacks->a, 1);
-		}
-		else
-		{
-			while (*stacks->a->nbr != ft_min_finder(stacks->a))
-				ft_rev_rot(&stacks->a, 1);
-		}
+		id = ft_index_finder(stacks->a, ft_min_finder(stacks->a));
+		ft_bring_to_top(&stacks->a, ft_min_finder(stacks->a), id);
 	}
 }

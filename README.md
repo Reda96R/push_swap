@@ -1,3 +1,5 @@
+# ::: push_swap :::
+
 `This project will make you sort data on a stack, with a limited set of instructions, using
 the lowest possible number of actions. To succeed you’ll have to manipulate various
 types of algorithms and choose the most appropriate solution (out of many) for an
@@ -427,4 +429,3 @@ if (i < ft_stack_size(stacks->a) - i)
 - [Time Complexities of all Sorting Algorithms](https://www.geeksforgeeks.org/time-complexities-of-all-sorting-algorithms/)
 - [Counting Sort](https://brilliant.org/wiki/counting-sort/)
 - [Radix Sort](https://www.javatpoint.com/radix-sort)
--
