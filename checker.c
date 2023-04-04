@@ -89,6 +89,8 @@ int	main(int ac, char *av[])
 	t_stacks	stacks;
 	char		*input;
 
+	if (ac == 1)
+		return (0);
 	ft_bzero(&stacks, sizeof(t_stacks));
 	ft_init_stacks(&stacks, ac, av, 0);
 	if (!stacks.a)
