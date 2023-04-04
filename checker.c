@@ -6,29 +6,29 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:17:12 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/31 14:02:56 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/03 00:39:10 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_executer_extension(t_stacks *stacks, char *input, int n)
+void	ft_executer_extension(t_stacks **stacks, char *input, int n)
 {
 	if (n == 1)
 	{
 		if (input[2] == 'a')
-			ft_rev_rot(&stacks->a, 0);
+			ft_rev_rot(&(*stacks)->a, 0);
 		else if (input[2] == 'b')
-			ft_rev_rot(&stacks->b, 0);
+			ft_rev_rot(&(*stacks)->b, 0);
 		else if (input[2] == 'r')
-			ft_rrr(&stacks->a, &stacks->b, 0);
+			ft_rrr(&(*stacks)->a, &(*stacks)->b, 0);
 	}
 	else
 	{
 		if (input[1] == 'a')
-			ft_push(&stacks->a, &stacks->b, 0);
+			ft_push(&(*stacks)->a, &(*stacks)->b, 0);
 		else if (input[1] == 'b')
-			ft_push(&stacks->b, &stacks->a, 0);
+			ft_push(&(*stacks)->b, &(*stacks)->a, 0);
 	}
 }
 
@@ -49,11 +49,13 @@ char	*ft_executer(t_stacks *stacks, char *input)
 			ft_rotate(&stacks->a, 0);
 		else if (input[1] == 'b')
 			ft_rotate(&stacks->b, 0);
+		else if (input[1] == 'r')
+			ft_rr(&stacks->a, &stacks->b, 0);
 	}
 	else if (input[0] == 'p' && input[2] == '\n')
-		ft_executer_extension(stacks, input, 0);
+		ft_executer_extension(&stacks, input, 0);
 	else if (input[0] == 'r' && input[1] == 'r' && input[3] == '\n')
-		ft_executer_extension(stacks, input, 1);
+		ft_executer_extension(&stacks, input, 1);
 	else
 		ft_errors_buster(stacks);
 	return (get_next_line(0));

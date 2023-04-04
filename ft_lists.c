@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 18:32:09 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/02/25 17:36:25 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/03 17:12:38 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ t_stack	*ft_last(t_stack *stack)
 
 int	ft_stack_size(t_stack *stack)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	while (stack)

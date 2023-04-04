@@ -6,7 +6,7 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/15 12:43:15 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/29 17:48:48 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/02 20:45:29 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,11 @@ void	ft_bzero(void *s, size_t n)
 	ft_memset(s, '\0', n);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int				i;
 	int				s;
-	unsigned long	r;
+	long			r;
 
 	i = 0;
 	s = 1;
@@ -49,14 +49,24 @@ int	ft_atoi(const char *str)
 			s *= -1;
 		i++;
 	}
-	while (r < 9223372036854775807 && str[i] >= '0' && str[i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		r = r * 10 + str[i] - 48;
 		i++;
 	}
-	if (r >= 9223372036854775807 && s == 1)
-		return (-1);
-	else if (r > 9223372036854775807 && s == -1)
-		return (0);
 	return (r * s);
+}
+
+void	ft_bring_to_top(t_stack **stack, int nbr, int id)
+{
+	if (id < ft_stack_size(*stack) - id)
+	{
+		while (*(*stack)->nbr != nbr)
+			ft_rotate(&(*stack), 1);
+	}
+	else
+	{
+		while (*(*stack)->nbr != nbr)
+			ft_rev_rot(&(*stack), 1);
+	}
 }
