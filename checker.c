@@ -6,35 +6,56 @@
 /*   By: rerayyad <rerayyad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/29 15:17:12 by rerayyad          #+#    #+#             */
-/*   Updated: 2023/03/31 14:02:56 by rerayyad         ###   ########.fr       */
+/*   Updated: 2023/04/04 18:01:31 by rerayyad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	ft_executer_extension(t_stacks *stacks, char *input, int n)
+int	ft_char_check(char c, char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+		if (str[i++] == c)
+			return (1);
+	return (0);
+}
+
+void	ft_executer_extension(t_stacks **stacks, char *input, int n)
 {
 	if (n == 1)
 	{
-		if (input[2] == 'a')
-			ft_rev_rot(&stacks->a, 0);
-		else if (input[2] == 'b')
-			ft_rev_rot(&stacks->b, 0);
-		else if (input[2] == 'r')
-			ft_rrr(&stacks->a, &stacks->b, 0);
+		if (input[1] == 'a')
+			ft_push(&(*stacks)->a, &(*stacks)->b, 0);
+		else if (input[1] == 'b')
+			ft_push(&(*stacks)->b, &(*stacks)->a, 0);
+	}
+	else if (n == 2)
+	{
+		if (input[1] == 'a')
+			ft_rotate(&(*stacks)->a, 0);
+		else if (input[1] == 'b')
+			ft_rotate(&(*stacks)->b, 0);
+		else if (input[1] == 'r')
+			ft_rr(&(*stacks)->a, &(*stacks)->b, 0);
 	}
 	else
 	{
-		if (input[1] == 'a')
-			ft_push(&stacks->a, &stacks->b, 0);
-		else if (input[1] == 'b')
-			ft_push(&stacks->b, &stacks->a, 0);
+		if (input[2] == 'a')
+			ft_rev_rot(&(*stacks)->a, 0);
+		else if (input[2] == 'b')
+			ft_rev_rot(&(*stacks)->b, 0);
+		else if (input[2] == 'r')
+			ft_rrr(&(*stacks)->a, &(*stacks)->b, 0);
 	}
 }
 
 char	*ft_executer(t_stacks *stacks, char *input)
 {
-	if (input[0] == 's' && input[2] == '\n')
+	if (input[0] == 's' && input[2] == '\n'
+		&& ft_char_check(input[1], "abs"))
 	{
 		if (input[1] == 'a')
 			ft_swap(&stacks->a, 0);
@@ -43,17 +64,15 @@ char	*ft_executer(t_stacks *stacks, char *input)
 		else if (input[1] == 's')
 			ft_ss(&stacks->a, &stacks->b, 0);
 	}
-	else if (input[0] == 'r' && input[2] == '\n')
-	{
-		if (input[1] == 'a')
-			ft_rotate(&stacks->a, 0);
-		else if (input[1] == 'b')
-			ft_rotate(&stacks->b, 0);
-	}
-	else if (input[0] == 'p' && input[2] == '\n')
-		ft_executer_extension(stacks, input, 0);
-	else if (input[0] == 'r' && input[1] == 'r' && input[3] == '\n')
-		ft_executer_extension(stacks, input, 1);
+	else if (input[0] == 'p' && input[2] == '\n'
+		&& ft_char_check(input[1], "ab"))
+		ft_executer_extension(&stacks, input, 1);
+	else if (input[0] == 'r' && input[2] == '\n'
+		&& ft_char_check(input[1], "abr"))
+		ft_executer_extension(&stacks, input, 2);
+	else if (input[0] == 'r' && input[1] == 'r'
+		&& input[3] == '\n' && ft_char_check(input[2], "abr"))
+		ft_executer_extension(&stacks, input, 0);
 	else
 		ft_errors_buster(stacks);
 	return (get_next_line(0));
@@ -87,6 +106,8 @@ int	main(int ac, char *av[])
 	t_stacks	stacks;
 	char		*input;
 
+	if (ac == 1)
+		return (0);
 	ft_bzero(&stacks, sizeof(t_stacks));
 	ft_init_stacks(&stacks, ac, av, 0);
 	if (!stacks.a)
