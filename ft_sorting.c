@@ -17,7 +17,6 @@ t_stacks	ft_first_sort(t_stacks *stacks)
 	int			counter;
 
 	counter = 1;
-
 	while (ft_stack_size(stacks->a) > 3 && counter++ < 3
 		&& !ft_check_sorting(stacks->a))
 		ft_push(&stacks->b, &stacks->a, 2);
@@ -38,6 +37,6 @@ void	ft_sort_stacks(t_stacks *stacks)
 	else
 	{
 		*stacks = ft_first_sort(&tmp);
-		//ft_second_sort(stacks);
+		ft_second_sort(stacks);
 	}
 }

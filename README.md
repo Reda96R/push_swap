@@ -163,7 +163,7 @@ Now we arrived in the part where we’ll have to sort or stacks, I’ll divide t
 
 ### The Algorithm:
 
-there are many algorithms that we can adopt to sort our stacks. but again our main goal here is to have the full score, and to do that we must adopt an algorithm that will do the sorting in the most efficient way possible, one of the most popular algorithm is to divide the stacks into small little chunks, if your more into this algorithm you check this [article](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a),
+there are many algorithms that we can adopt to sort our stacks. but again our main goal here is to have the full score, and to do that we must adopt an algorithm that will do the sorting in the most efficient way possible, one of the most popular algorithm is to divide the stacks into small little chunks, if your more into this algorithm you check this [article](https://medium.com/@jamierobertdawson/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a), for me, the algorithm that I will use is inspired from ****[A. Yigit Ogun](https://medium.com/@ayogun)’s** mecanical turk algorithm as he likes to call it : ) . 
 
 first we will try to deal with the three numbers case, which is the simplest one, and to do that we’ll split our function into three possibilities:
 
